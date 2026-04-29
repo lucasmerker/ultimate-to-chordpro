@@ -1,5 +1,10 @@
 /* global gtag */
-import ChordSheetJS from "chordsheetjs";
+import {
+  ChordProParser,
+  ChordProFormatter,
+  TextFormatter,
+  UltimateGuitarParser,
+} from "chordsheetjs";
 import LatexFormatter from "./latex-formatter";
 import "./style/index.css";
 
@@ -36,15 +41,13 @@ function normalizeUltimateGuitarSectionGaps(text) {
 }
 
 const parsers = {
-  chordpro: new ChordSheetJS.ChordProParser(),
-  ultimate: new ChordSheetJS.UltimateGuitarParser({
-    preserveWhitespace: false,
-  }),
+  chordpro: new ChordProParser(),
+  ultimate: new UltimateGuitarParser({ preserveWhitespace: false }),
 };
 const formatters = {
-  chordpro: new ChordSheetJS.ChordProFormatter(),
+  chordpro: new ChordProFormatter(),
   latex: new LatexFormatter(),
-  ultimate: new ChordSheetJS.TextFormatter(),
+  ultimate: new TextFormatter(),
 };
 
 let formatTracked = false;
