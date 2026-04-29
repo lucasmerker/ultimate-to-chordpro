@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "engines": {
-    "node": ">=18.12.0"
+    "node": ">=16.0.0"
   },
   "scripts": {
     "build": "webpack build --mode=production",
@@ -18,15 +18,15 @@
     "chordsheetjs": "^14.5.1"
   },
   "devDependencies": {
-    "css-loader": "^7.1.4",
+    "css-loader": "^6.11.0",
     "favicons": "^7.2.0",
     "favicons-webpack-plugin": "^6.0.1",
-    "html-webpack-plugin": "^5.6.7",
+    "html-webpack-plugin": "^5.6.0",
     "onchange": "^7.1.0",
-    "prettier": "^3.8.3",
-    "style-loader": "^4.0.0",
-    "webpack": "^5.106.0",
-    "webpack-cli": "^7.0.2",
-    "webpack-dev-server": "^5.2.3"
+    "prettier": "^3.3.3",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.2"
   }
 }
