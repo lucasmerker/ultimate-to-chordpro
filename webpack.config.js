@@ -1,3 +1,4 @@
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
@@ -9,7 +10,9 @@ module.exports = {
     new FaviconsWebpackPlugin('./src/image/guitar.png')
   ],
   devServer: {
-    contentBase: './dist'
+    static: {
+      directory: path.join(__dirname, 'dist')
+    }
   },
   module: {
     rules: [
