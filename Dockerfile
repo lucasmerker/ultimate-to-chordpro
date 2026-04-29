@@ -1,5 +1,5 @@
 # Build static assets (webpack → dist/)
-FROM node:20-bookworm-slim AS build
+FROM node:22-bookworm-slim AS build
 
 WORKDIR /app
 
@@ -13,8 +13,8 @@ ENV NODE_ENV=production
 
 RUN npm run build
 
-# Serve dist/ with nginx
-FROM nginx:1.27-alpine
+# Serve dist/ with nginx (stable channel)
+FROM nginx:stable-alpine
 
 COPY docker/nginx-default.conf /etc/nginx/conf.d/default.conf
 

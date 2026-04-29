@@ -1,33 +1,35 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 module.exports = {
+  entry: "./src/index.js",
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: "./src/index.html",
     }),
-    new FaviconsWebpackPlugin('./src/image/guitar.png')
+    new FaviconsWebpackPlugin("./src/image/guitar.png"),
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist')
-    }
+      directory: path.join(__dirname, "dist"),
+    },
+    open: true,
   },
   module: {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader']
-      }
-    ]
+        use: ["style-loader", "css-loader"],
+      },
+    ],
   },
   resolve: {
     alias: {
-      handlebars: 'handlebars/dist/handlebars.min.js'
+      handlebars: "handlebars/dist/handlebars.min.js",
     },
     fallback: {
-      fs: false
-    }
-  }
-}
+      fs: false,
+    },
+  },
+};

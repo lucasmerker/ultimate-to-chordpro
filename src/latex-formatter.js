@@ -1,15 +1,15 @@
-import Tag, {
-  ARTIST,
-  TITLE,
-  SUBTITLE,
-  COMMENT,
-  CAPO,
-  START_OF_CHORUS,
-  END_OF_CHORUS,
-  START_OF_VERSE,
-  END_OF_VERSE,
-} from "chordsheetjs/lib/chord_sheet/tag";
-import ChordLyricsPair from "chordsheetjs/lib/chord_sheet/chord_lyrics_pair";
+import { Tag, ChordLyricsPair } from "chordsheetjs";
+
+/** ChordPro directive names (aligned with ChordSheetJS `chord_sheet/tags`). */
+const TITLE = "title";
+const SUBTITLE = "subtitle";
+const ARTIST = "artist";
+const COMMENT = "comment";
+const CAPO = "capo";
+const START_OF_CHORUS = "start_of_chorus";
+const END_OF_CHORUS = "end_of_chorus";
+const START_OF_VERSE = "start_of_verse";
+const END_OF_VERSE = "end_of_verse";
 
 const NEW_LINE = "\n";
 const flatMap = (arr, fn) => arr.reduce((acc, x) => [...acc, ...fn(x)], []);
@@ -39,14 +39,15 @@ class LatexFormatter {
   }
 
   formatHeaderTags(song) {
-    const headerTags = flatMap(song.lines, (line) => line.items)
-      .filter(this.isHeaderTag)
+    const headerTags = flatMap(song.lines, (line) => line.items).filter(
+      (item) => this.isHeaderTag(item),
+    )
       .reduce(
         (tmp, tag) => ({
           ...tmp,
           [tag.name]: tag,
         }),
-        {}
+        {},
       );
     const title = headerTags.title && headerTags.title.value;
     const subtitle = headerTags.subtitle && headerTags.subtitle.value;
